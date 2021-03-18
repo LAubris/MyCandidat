@@ -11,6 +11,17 @@
       <h3>Bienvenue</h3>
     </div>
   </ion-col>
+
+
+  <ion-card *ngFor="let image of images">
+    <ion-img [src]="image.url"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{ image.name }}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+
+
   <br><br><br><br><br><br><br><br><br><br><br><br><br>
   <ion-col>
     <div class="ion-text-center">
