@@ -3,7 +3,38 @@
     <ion-title>Inscription</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content [fullscreen]="true">
+  
 
-<ion-content>
+  <ion-item>
+    <ion-label position="floating">Nom</ion-label>
+    <ion-input [(ngModel)]="can_nom" placeholder="Nom" type="string" id="can_nom" ></ion-input>
+  </ion-item>
 
+  <ion-item>
+    <ion-label position="floating">Prénom</ion-label>
+    <ion-input [(ngModel)]="can_prenom" placeholder="Prénom" type="string" id="can_prenom"></ion-input>
+  </ion-item>
+ 
+  <ion-item>
+    <ion-label position="floating">Mail</ion-label>
+    <ion-input [(ngModel)]="can_mail" placeholder="Mail" type="string" id="can_mail"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Téléphone</ion-label>
+    <ion-input [(ngModel)]="can_tel" placeholder="Numéro de téléphone" type="string" id="can_tel"></ion-input>
+  </ion-item>
+
+  <ion-content class="padding">
+    <div class = "row center">
+      <div class="col text-center">
+        <ion-button color="danger" type="reset">Reset</ion-button>
+      </div>
+      <div class="col text-center">
+        <ion-button (click)="addFirestore()" color="success" type="submit">Success</ion-button>
+        
+      </div>
+    </div>
+  </ion-content>
 </ion-content>
