@@ -17,24 +17,14 @@ export class AccueilPage implements OnInit {
 
   ngOnInit() {
   }  
-  images = [];
+  images = "";
   getImagesDatabase() {
-    //probleme ici
-    this.afDB.list('Images').snapshotChanges(['child_added']).subscribe(images => {
-      images.forEach(image => {
-        this.getImagesStorage(image);
-      });
+    this.afSG.ref('Images/logo.png').getDownloadURL().subscribe(images => {
+        console.log('Ref de l\'image: ' + images);
+        this.images = images;
     });
+   
   }
-  getImagesStorage(image: any) {
-    const imgRef = image.payload.exportVal().ref;
-    this.afSG.ref(imgRef).getDownloadURL().subscribe(imgUrl => {
-      console.log(imgUrl);
-      this.images.push({
-        name: image.payload.exportVal().name,
-        url: imgUrl
-      });
-    });
-  }
+  
 }
 
