@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-
-
+import { AlertController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 @Component({
@@ -13,7 +12,8 @@ export class InscriptionPage implements OnInit {
 
   constructor(
     public afDB: AngularFireDatabase,
-    public firestore: AngularFirestore
+    public firestore: AngularFirestore,
+    public alertCtrl: AlertController,
     )
     {
       this.candidats = firestore.collection('candidat').valueChanges();
@@ -36,6 +36,26 @@ export class InscriptionPage implements OnInit {
       can_prenom: this.can_prenom,
       can_mail: this.can_mail,
       can_tel: this.can_tel,
+      ins_date: Date.now(),
+
       });
   }
+ 
+  async Validation() { 
+    const alert = await this.alertCtrl.create({ 
+    header: 'Confirmation', 
+    subHeader: 'Veuillez confirmer vos information',
+    message:'Nom : '+this.can_nom+
+            ', Prénom : '+this.can_prenom+
+            ', Mail : '+this.can_mail+
+            ', Tel : '+this.can_tel
+    ,
+    buttons: ['NON','OUI'] 
+    }); 
+    await alert.present(); 
+    const result = await alert.onDidDismiss();  
+    console.log(result); 
+  
+    
+    } 
 }

@@ -16,12 +16,12 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyD6akPBVCWq7MYKCMW47MpS9IYAbdL7Xgo",
-    authDomain: "mycandidat-a2e10.firebaseapp.com",
-    databaseURL: "https://mycandidat-a2e10-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "mycandidat-a2e10",
-    storageBucket: "mycandidat-a2e10.appspot.com",
-    messagingSenderId: "960342895050",
-    appId: "1:960342895050:web:ac15bbe2317c7210b70733"
+  authDomain: "mycandidat-a2e10.firebaseapp.com",
+  databaseURL: "https://mycandidat-a2e10-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "mycandidat-a2e10",
+  storageBucket: "mycandidat-a2e10.appspot.com",
+  messagingSenderId: "960342895050",
+  appId: "1:960342895050:web:ac15bbe2317c7210b70733"
 };
 
 

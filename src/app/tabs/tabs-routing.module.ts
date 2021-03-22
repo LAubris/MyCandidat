@@ -12,23 +12,31 @@ const routes: Routes = [
         loadChildren: () => import('../inscription/inscription.module').then(m => m.InscriptionPageModule)
       },
       {
+        path: 'enseignant',
+        loadChildren: () => import('../enseignant/enseignant.module').then(m => m.EnseignantPageModule)
+      },
+      {
         path: 'accueil',
         loadChildren: () => import('../accueil/accueil.module').then(m => m.AccueilPageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'rgpd',
+        loadChildren: () => import('../Rgpd/rgpd.module').then(m => m.RgpdPageModule)
+      },
+      {
+        path: 'connexion',
+        loadChildren: () => import('../Connexion/connexion.module').then(m => m.ConnexionPageModule)
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/accueil',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/accueil',
     pathMatch: 'full'
   }
 ];

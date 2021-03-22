@@ -11,27 +11,19 @@
       <h3>Bienvenue</h3>
     </div>
   </ion-col>
-
-
-  <ion-card *ngFor="let image of images">
-    <ion-img [src]="image.url"></ion-img>
-    <ion-card-header>
-      <ion-card-subtitle>{{ image.name }}</ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
-
-
-
   <br><br><br><br><br><br><br><br><br><br><br><br><br>
   <ion-col>
     <div class="ion-text-center">
-      <ion-button size="default" color="light">Inscription</ion-button>
-      <ion-button size="default" color="light">Connexion</ion-button>
+      <ion-button size="default" [routerLink]="['/tabs/inscription']" color="light">Inscription</ion-button>
+      <ion-button size="default" [routerLink]="['/tabs/connexion']" color="light">Connexion</ion-button>
     </div>
+    
   </ion-col>
   <ion-col>
     <div class="ion-text-center">
-      <ion-button size="small" fill="outline" color="dark">RGPD</ion-button>
+      <ion-button size="small" fill="outline" [routerLink]="['/tabs/rgpd']" color="dark">RGPD</ion-button>
     </div>
   </ion-col>
+
 </ion-content>
+  
