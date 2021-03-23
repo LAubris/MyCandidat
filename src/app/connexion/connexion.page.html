@@ -1,25 +1,53 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Connexion</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div *ngIf="!connected">
-    <!-- À afficher si l'utilisateur n'est pas connecté -->
-    <ion-item>
-      <ion-label><b>Email:</b></ion-label>
-      <ion-input type="email" [(ngModel)]="dataUser.email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label><b>Mot de passe:</b></ion-label>
-      <ion-input type="password" [(ngModel)]="dataUser.password"></ion-input>
-    </ion-item>
-    <ion-button expand="block" color="primary" (click)="login()">Connexion</ion-button>
-  </div>
+
+  <ion-grid class="grid1">
   
-  <div *ngIf="connected">
-    <!-- Si l'utilisateur est connecté -->
-    <ion-button expand="block" color="danger" (click)="logout()">Déconnexion</ion-button>
-  </div>
-</ion-content>
+      <ion-row class="row1">
+          <ion-col>
+  
+          </ion-col>
+      </ion-row>
+  
+      <ion-row class="row2">
+          <ion-col>
+  
+          </ion-col>
+      </ion-row>
+  
+  </ion-grid>
+  
+  <ion-slide>
+      <div class="contaier-login">
+          <ion-grid>
+              <ion-row>
+                  <ion-col>
+                      <h1>Connexion</h1>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <ion-list>
+  
+                          <ion-item>
+                              <ion-icon name="person" class="icon-login"></ion-icon>
+                              <ion-input name="user" type="email" required placeholder="Identifiant" [(ngModel)]="dataUser.email"></ion-input>
+                          </ion-item>
+                          <br />
+                          <ion-item>
+                              <ion-icon name="key" class="icon-login"></ion-icon>
+                              <ion-input name="password" type="password" [(ngModel)]="dataUser.password" required placeholder="Mot de passe"></ion-input>
+                          </ion-item>
+  
+                      </ion-list>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <ion-button type="submit" fill="solid" expand="full" (click)="login()">
+                          Entrer
+                      </ion-button>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </div>
+  </ion-slide>
