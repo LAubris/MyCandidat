@@ -30,6 +30,11 @@ export class InscriptionPage implements OnInit {
   can_form: string;
   can_lieu: string;
   can_date: String = new Date().toISOString();
+  can_bac: string;
+  can_bacOption: string;
+  can_bacOption2: string;
+  can_bacOption3: string;
+  can_etablissement: string;
 
 
 
@@ -47,12 +52,20 @@ export class InscriptionPage implements OnInit {
  
   async Validation() { 
     const alert = await this.alertCtrl.create({ 
-    header: 'Confirmation', 
+    header: 'Ajouter', 
     subHeader: 'Veuillez confirmer vos information',
     message:'Nom : '+this.can_nom+
-            ', Prénom : '+this.can_prenom+
-            ', Mail : '+this.can_mail+
-            ', Tel : '+this.can_tel
+            ',<br> Prénom : '+this.can_prenom+
+            ',<br> Mail : '+this.can_mail+
+            ',<br> Tel : '+this.can_tel+
+            ',<br> Etablissement : '+this.can_etablissement+
+            ',<br> Bac : '+this.can_bac+
+            ',<br> Option : '+this.can_bacOption+
+            ',<br> Option2 : '+this.can_bacOption2+
+            ',<br> Option3 : '+this.can_bacOption3+
+            ',<br> Formation : '+this.can_form+
+            ',<br> Lieu : '+this.can_lieu
+            
     ,
     buttons: ['NON','OUI'] 
     }); 

@@ -8,19 +8,26 @@ import { AngularFireStorage } from '@angular/fire/storage';
 })
 export class AccueilPage implements OnInit {
 
+  
+
   constructor(
     public afDB: AngularFireDatabase,
     public afSG: AngularFireStorage
-  )  
- {}
+  ) {
+    this.getImagesDatabase();
+  }
+
   ngOnInit() {
-  
-  }
-  images= "";
-  getImagesDatabase(){
+  }  
+  images = "";
+  getImagesDatabase() {
     this.afSG.ref('Images/logo.png').getDownloadURL().subscribe(images => {
-      this.images = images;
-    })
+        console.log('Ref de l\'image: ' + images);
+        this.images = images;
+    });
+   
   }
+  
+
 }
 
