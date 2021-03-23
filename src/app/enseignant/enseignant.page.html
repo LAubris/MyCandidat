@@ -16,6 +16,7 @@
     <ion-col>Mail</ion-col>
     <ion-col>Tel</ion-col>
   </ion-item>
+  
   <ion-item *ngFor="let candidats of candidats | async">
     <ion-label>{{ candidats.can_nom }}</ion-label>
     <ion-label>{{ candidats.can_prenom }}</ion-label>
