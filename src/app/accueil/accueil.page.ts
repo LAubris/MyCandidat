@@ -16,6 +16,11 @@ export class AccueilPage implements OnInit {
   ngOnInit() {
   
   }
-
+  images= "";
+  getImagesDatabase(){
+    this.afSG.ref('Images/logo.png').getDownloadURL().subscribe(images => {
+      this.images = images;
+    })
+  }
 }
 
