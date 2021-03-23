@@ -8,6 +8,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 })
 export class AccueilPage implements OnInit {
 
+  
+
   constructor(
     public afDB: AngularFireDatabase,
     public afSG: AngularFireStorage
@@ -26,5 +28,6 @@ export class AccueilPage implements OnInit {
    
   }
   
+
 }
 

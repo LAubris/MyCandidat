@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Enseignant</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-col>Nom</ion-col>
+    <ion-col>Prénom</ion-col>
+    <ion-col>Mail</ion-col>
+    <ion-col>Tel</ion-col>
+  </ion-item>
+  <ion-item *ngFor="let candidats of candidats | async">
+    <ion-label>{{ candidats.can_nom }}</ion-label>
+    <ion-label>{{ candidats.can_prenom }}</ion-label>
+    <ion-label>{{ candidats.can_mail }}</ion-label>
+    <ion-label>{{ candidats.can_tel }}</ion-label>
+</ion-item>
+
+</ion-content>

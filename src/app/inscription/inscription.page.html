@@ -1,30 +1,66 @@
 <ion-header>
   <ion-toolbar>
+    <ion-col>
+      <div class="ion-text-center">
     <ion-title>Inscription</ion-title>
+    </div></ion-col>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  
-
+  <ion-col>
+    <div class="ion-text-center">
+  <ion-title>Formulaire d'inscription</ion-title>
+  </div></ion-col>
   <ion-item>
     <ion-label position="floating">Nom</ion-label>
     <ion-input [(ngModel)]="can_nom" placeholder="Nom" type="string" id="can_nom" ></ion-input>
   </ion-item>
-
   <ion-item>
     <ion-label position="floating">Prénom</ion-label>
     <ion-input [(ngModel)]="can_prenom" placeholder="Prénom" type="string" id="can_prenom"></ion-input>
   </ion-item>
- 
   <ion-item>
     <ion-label position="floating">Mail</ion-label>
     <ion-input [(ngModel)]="can_mail" placeholder="Mail" type="string" id="can_mail"></ion-input>
   </ion-item>
-
   <ion-item>
     <ion-label position="floating">Téléphone</ion-label>
     <ion-input [(ngModel)]="can_tel" placeholder="Numéro de téléphone" type="string" id="can_tel"></ion-input>
   </ion-item>
+  <ion-list>
+    <ion-radio-group  [(ngModel)]="can_form" value="can_form">
+      <ion-list-header>
+        <ion-label>Formation désirée</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>SLAM : Solutions Logicielles et Applications Métier</ion-label>
+        <ion-radio slot="start" value="SLAM"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>SISR : Solutions d’infrastructure, systèmes et réseaux</ion-label>
+        <ion-radio slot="start" value="SISR"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ne sais pas</ion-label>
+        <ion-radio slot="start" value="NSP"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <ion-list>
+    <ion-radio-group  [(ngModel)]="can_lieu" value="can_lieu">
+      <ion-list-header>
+        <ion-label>Lieu d'inscription</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Porte-ouverte</ion-label>
+        <ion-radio slot="start" value="Porte_ouverte"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Forum des métiers</ion-label>
+        <ion-radio slot="start" value="ForumDesMetiers"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
 
   <ion-content class="padding">
     <div class = "row center">
@@ -32,8 +68,8 @@
         <ion-button color="danger" type="reset">Reset</ion-button>
       </div>
       <div class="col text-center">
-        <ion-button (click)="addFirestore()" color="success" type="submit">Success</ion-button>
-        
+        <ion-button  (click)="Validation()" color="success" type="submit">Success</ion-button>
+        <!--(click)="addFirestore()" -->
       </div>
     </div>
   </ion-content>

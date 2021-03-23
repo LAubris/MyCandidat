@@ -15,7 +15,20 @@ const routes: Routes = [
   {
     path: 'accueil',
     loadChildren: () => import('./accueil/accueil.module').then( m => m.AccueilPageModule)
+  },
+  {
+    path: 'enseignant',
+    loadChildren: () => import('./enseignant/enseignant.module').then( m => m.EnseignantPageModule)
+  },  {
+    path: 'rgpd',
+    loadChildren: () => import('./rgpd/rgpd.module').then( m => m.RgpdPageModule)
+  },
+  {
+    path: 'connexion',
+    loadChildren: () => import('./connexion/connexion.module').then( m => m.ConnexionPageModule)
   }
+
+
 
 ];
 @NgModule({
