@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-enseignant',
@@ -8,7 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class EnseignantPage implements OnInit {
 
-  constructor(public firestore: AngularFirestore) {
+  constructor(public firestore: AngularFirestore, public afAuth: AngularFireAuth,) {
+    
     this.candidats = firestore.collection('candidats').valueChanges();
   }
 
@@ -19,5 +21,13 @@ export class EnseignantPage implements OnInit {
   can_prenom: string;
   can_mail: string;
   can_tel: string;
+
+
+
+
+  logout() {
+    this.afAuth.signOut();
+  }
+
 
 }

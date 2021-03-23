@@ -1,20 +1,31 @@
 <ion-tabs>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="inscription">
-      <ion-icon name="triangle"></ion-icon>
-      <ion-label>inscription</ion-label>
-    </ion-tab-button>
 
-    <ion-tab-button tab="accueil">
-      <ion-icon name="triangle"></ion-icon>
-      <ion-label>Accueil</ion-label>
-    </ion-tab-button>
 
-    <ion-tab-button tab="enseignant">
+    <div *ngIf="connected">
+      <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="accueil" (click)="logout()">
       <ion-icon name="triangle"></ion-icon>
-      <ion-label>Enseignant</ion-label>
+      <ion-label>Déconnexion</ion-label>
     </ion-tab-button>
+      
+    <ion-tab-button tab="">
+      <ion-icon name="triangle"></ion-icon>
+      <ion-label>Récapitulatif</ion-label>
+    </ion-tab-button> 
   </ion-tab-bar>
+</div>
+
+<div *ngIf="!connected">
+  <ion-tab-bar slot="bottom">
+  <ion-tab-button tab="accueil">
+    <ion-icon name="triangle"></ion-icon>
+    <ion-label>Accueil</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
+  </div>
+
+
+
 
 </ion-tabs>
