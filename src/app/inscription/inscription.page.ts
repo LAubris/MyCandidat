@@ -28,12 +28,13 @@ export class InscriptionPage implements OnInit {
   can_mail: string;
   can_tel: string;
   can_form: string;
+  can_lieu: string;
+  can_date: String = new Date().toISOString();
   can_bac: string;
   can_bacOption: string;
   can_bacOption2: string;
   can_bacOption3: string;
   can_etablissement: string;
-  can_lieu: string;
 
 
 
@@ -44,8 +45,8 @@ export class InscriptionPage implements OnInit {
       can_mail: this.can_mail,
       can_tel: this.can_tel,
       can_form: this.can_form,
-      ins_date: Date.now(),
-
+      can_lieu: this.can_lieu,
+      can_date: this.can_date,
       });
   }
  

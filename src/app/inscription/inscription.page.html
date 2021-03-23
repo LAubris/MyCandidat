@@ -28,7 +28,7 @@
     <ion-input [(ngModel)]="can_tel" placeholder="Numéro de téléphone" type="string" id="can_tel"></ion-input>
   </ion-item>
   <ion-list>
-    <ion-radio-group  [(ngModel)]="can_form" value="can_form">
+    <ion-radio-group [(ngModel)]="can_form" value="can_form">
       <ion-list-header>
         <ion-label>Formation désirée</ion-label>
       </ion-list-header>
@@ -46,29 +46,33 @@
       </ion-item>
     </ion-radio-group>
   </ion-list>
+
+
+
   <ion-list>
-    <ion-radio-group  [(ngModel)]="can_lieu" value="can_lieu">
+    <ion-radio-group [(ngModel)]="can_lieu" value="can_lieu">
       <ion-list-header>
         <ion-label>Lieu d'inscription</ion-label>
       </ion-list-header>
       <ion-item>
         <ion-label>Porte-ouverte</ion-label>
-        <ion-radio slot="start" value="Porte_ouverte"></ion-radio>
+        <ion-radio slot="start" value="Porte_Ouverte"></ion-radio>
       </ion-item>
       <ion-item>
         <ion-label>Forum des métiers</ion-label>
-        <ion-radio slot="start" value="ForumDesMetiers"></ion-radio>
+        <ion-radio slot="start" value="Forum_Des_Metiers"></ion-radio>
       </ion-item>
     </ion-radio-group>
   </ion-list>
+  
+  <ion-item>
+    <ion-datetime hidden="true" displayFormat="DD/MM/YYYY" [(ngModel)]="can_date"></ion-datetime>
+  </ion-item>
 
   <ion-content class="padding">
     <div class = "row center">
       <div class="col text-center">
-        <ion-button color="danger" type="reset">Reset</ion-button>
-      </div>
-      <div class="col text-center">
-        <ion-button  (click)="Validation()" color="success" type="submit">Success</ion-button>
+        <ion-button (click)="addFirestore()" color="success" type="submit">Success</ion-button>
         <!--(click)="addFirestore()" -->
       </div>
     </div>
