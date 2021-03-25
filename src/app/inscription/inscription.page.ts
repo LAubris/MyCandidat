@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, snapshotChanges } from '@angular/fire/database';
 import { AlertController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -16,25 +16,43 @@ export class InscriptionPage implements OnInit {
     public alertCtrl: AlertController,
     )
     {
-      this.candidats = firestore.collection('candidat').valueChanges();
+      this.candidats = firestore.collection('candidats').valueChanges();
 
      }
   ngOnInit() {
+/*     const db = this.firestore;
+    var identifiant = 0;
+    db.collection("candidats").get().toPromise.then((snapshot)=>{
+      snapshot.docs.array.forEach(can_id => {
+        if (identifiant < can_id){
+          identifiant = can_id;
+        }
+        
+      });
+    }) */
   }
 
   candidats: Observable<any[]>;
+  
+  
+  can_id: number;
   can_nom: string;
   can_prenom: string;
   can_mail: string;
   can_tel: string;
-  can_form: string;
-  can_lieu: string;
+
+
   can_date: String = new Date().toISOString();
   can_bac: string;
   can_bacOption: string;
   can_bacOption2: string;
   can_bacOption3: string;
   can_etablissement: string;
+
+
+  
+  ins_form: string;
+  ins_lieu: string;
 
 
 
@@ -44,9 +62,6 @@ export class InscriptionPage implements OnInit {
       can_prenom: this.can_prenom,
       can_mail: this.can_mail,
       can_tel: this.can_tel,
-      can_form: this.can_form,
-      can_lieu: this.can_lieu,
-      can_date: this.can_date,
       });
   }
  
@@ -63,8 +78,8 @@ export class InscriptionPage implements OnInit {
             ',<br> Option : '+this.can_bacOption+
             ',<br> Option2 : '+this.can_bacOption2+
             ',<br> Option3 : '+this.can_bacOption3+
-            ',<br> Formation : '+this.can_form+
-            ',<br> Lieu : '+this.can_lieu
+            ',<br> Formation : '+this.ins_form+
+            ',<br> Lieu : '+this.ins_lieu
             
     ,
     buttons: ['NON','OUI'] 
