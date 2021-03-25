@@ -14,6 +14,10 @@ export class EnseignantPage implements OnInit {
     this.candidats = firestore.collection('candidats').valueChanges();
   }
 
+
+
+
+
   ngOnInit() {
   }
   candidats: Observable<any[]>;

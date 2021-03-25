@@ -1,15 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <br>
-    <ion-col>
-      <div class="ion-text-center">
-    <ion-title>Enseignant</ion-title>
-    </div></ion-col>
- 
-  </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        Sélectionner la date
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-select placeholder="Choisir une date">
+        
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        Sélectionner la section
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Section</ion-label>
+      <ion-select placeholder="Choisir une section">
+        <ion-select-option value="SLAM">SLAM</ion-select-option>
+      <ion-select-option value="SISR">SISR</ion-select-option>
+      <ion-select-option value="NeSaisPas">Ne sais pas</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+
   <ion-item>
     <ion-col>Nom</ion-col>
     <ion-col>Prénom</ion-col>
