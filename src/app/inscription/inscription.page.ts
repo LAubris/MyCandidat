@@ -3,6 +3,7 @@ import { AngularFireDatabase, snapshotChanges } from '@angular/fire/database';
 import { AlertController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.page.html',
@@ -17,22 +18,24 @@ export class InscriptionPage implements OnInit {
     )
     {
       this.candidats = firestore.collection('candidats').valueChanges();
+      this.inscriptions = firestore.collection('inscriptions').valueChanges();
+      this.inscriptionsBacs = firestore.collection('inscriptionsBacs').valueChanges();
 
+      this.etablissements = firestore.collection('etablissements').valueChanges();
+      this.bacs = firestore.collection('bacs').valueChanges();
+      this.bacOptions = firestore.collection('bacOptions').valueChanges();
      }
   ngOnInit() {
-/*     const db = this.firestore;
-    var identifiant = 0;
-    db.collection("candidats").get().toPromise.then((snapshot)=>{
-      snapshot.docs.array.forEach(can_id => {
-        if (identifiant < can_id){
-          identifiant = can_id;
-        }
-        
-      });
-    }) */
+ 
   }
 
   candidats: Observable<any[]>;
+  inscriptions: Observable<any[]>;
+  inscriptionsBacs: Observable<any[]>;
+
+  etablissements: Observable<any[]>;
+  bacs: Observable<any[]>;
+  bacOptions: Observable<any[]>;
   
   
   can_id: number;
@@ -42,27 +45,46 @@ export class InscriptionPage implements OnInit {
   can_tel: string;
 
 
-  can_date: String = new Date().toISOString();
-  can_bac: string;
-  can_bacOption: string;
-  can_bacOption2: string;
-  can_bacOption3: string;
-  can_etablissement: string;
-
-
-  
+  ins_date: String =new Date().getUTCDate() +"/"+(new Date().getUTCMonth()+1)+"/"+new Date().getFullYear();
   ins_form: string;
   ins_lieu: string;
 
 
+  bac_etablissement: string;
+  bac_libelle: string;
+  bac_Option1: string;
+  bac_Option2: string;
+  bac_Option3: string;
+
+  
+
+
 
   addFirestore() {
-    this.firestore.collection('candidats').add({
+    this.can_id = new Date().getTime() + Math.floor(Math.random() * 50);
+    var id_doc_can = this.can_id.toString();
+    this.firestore.collection('candidats').doc(id_doc_can).set({
+      can_id: this.can_id,
       can_nom: this.can_nom,
       can_prenom: this.can_prenom,
       can_mail: this.can_mail,
       can_tel: this.can_tel,
       });
+    this.firestore.collection('inscriptions').add({
+      can_id: this.can_id,
+      ins_date: this.ins_date,
+      ins_form: this.ins_form,
+      ins_lieu: this.ins_lieu,
+      });
+    this.firestore.collection('inscriptionsBacs').add({
+      can_id: this.can_id,
+      bac_etablissement: this.bac_etablissement,
+      bac_libelle: this.bac_libelle,
+      bac_Option1: this.bac_Option1,
+      bac_Option2: this.bac_Option2,
+      bac_Option3: this.bac_Option3,
+      });
+  
   }
  
   async Validation() { 
@@ -73,11 +95,11 @@ export class InscriptionPage implements OnInit {
             ',<br> Prénom : '+this.can_prenom+
             ',<br> Mail : '+this.can_mail+
             ',<br> Tel : '+this.can_tel+
-            ',<br> Etablissement : '+this.can_etablissement+
-            ',<br> Bac : '+this.can_bac+
-            ',<br> Option : '+this.can_bacOption+
-            ',<br> Option2 : '+this.can_bacOption2+
-            ',<br> Option3 : '+this.can_bacOption3+
+            ',<br> Etablissement : '+this.bac_etablissement+
+            ',<br> Bac : '+this.bac_libelle+
+            ',<br> Option : '+this.bac_Option1+
+            ',<br> Option2 : '+this.bac_Option2+
+            ',<br> Option3 : '+this.bac_Option3+
             ',<br> Formation : '+this.ins_form+
             ',<br> Lieu : '+this.ins_lieu
             
