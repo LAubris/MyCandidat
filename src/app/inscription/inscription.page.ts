@@ -3,6 +3,7 @@ import { AngularFireDatabase, snapshotChanges } from '@angular/fire/database';
 import { AlertController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -15,6 +16,7 @@ export class InscriptionPage implements OnInit {
     public afDB: AngularFireDatabase,
     public firestore: AngularFirestore,
     public alertCtrl: AlertController,
+    public router: Router,
     )
     {
       this.candidats = firestore.collection('candidats').valueChanges();
@@ -45,7 +47,7 @@ export class InscriptionPage implements OnInit {
   can_tel: string;
 
 
-  ins_date: String =new Date().getUTCDate() +"/"+(new Date().getUTCMonth()+1)+"/"+new Date().getFullYear();
+  ins_date: String = new Date().getUTCDate() +"/"+(new Date().getUTCMonth()+1)+"/"+new Date().getFullYear();
   ins_form: string;
   ins_lieu: string;
 
@@ -55,9 +57,6 @@ export class InscriptionPage implements OnInit {
   bac_Option1: string;
   bac_Option2: string;
   bac_Option3: string;
-
-  
-
 
 
   addFirestore() {
@@ -92,24 +91,39 @@ export class InscriptionPage implements OnInit {
     header: 'Ajouter', 
     subHeader: 'Veuillez confirmer vos information',
     message:'Nom : '+this.can_nom+
-            ',<br> Prénom : '+this.can_prenom+
-            ',<br> Mail : '+this.can_mail+
-            ',<br> Tel : '+this.can_tel+
-            ',<br> Etablissement : '+this.bac_etablissement+
-            ',<br> Bac : '+this.bac_libelle+
-            ',<br> Option : '+this.bac_Option1+
-            ',<br> Option2 : '+this.bac_Option2+
-            ',<br> Option3 : '+this.bac_Option3+
-            ',<br> Formation : '+this.ins_form+
-            ',<br> Lieu : '+this.ins_lieu
+            '<br> Prénom : '+this.can_prenom+
+            '<br> Mail : '+this.can_mail+
+            '<br> Tel : '+this.can_tel+
+            '<br> Etablissement : '+this.bac_etablissement+
+            '<br> Bac : '+this.bac_libelle+
+            '<br> Option 1 : '+this.bac_Option1+
+            '<br> Option 2 : '+this.bac_Option2+
+            '<br> Option 3 : '+this.bac_Option3+
+            '<br> Formation : '+this.ins_form+
+            '<br> Lieu : '+this.ins_lieu
             
     ,
-    buttons: ['NON','OUI'] 
-    }); 
-    await alert.present(); 
-    const result = await alert.onDidDismiss();  
-    console.log(result); 
-    } 
+    buttons: [
+      {
+        text: 'Annuler',
+        handler: () => {
+         
+        }
+      },
+      {
+        text: 'Confirmer',
+        handler: () => {
+          this.addFirestore();
+          this.router.navigate(['tabs/accueil']);
+        }
+      },
+    ]
+  }).then(res => {
+    res.present();
+  });
+
+
+}
 
     
 }
