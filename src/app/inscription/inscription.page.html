@@ -35,7 +35,7 @@
     <ion-label>Votre bac</ion-label>
     <ion-select interface="action-sheet" [(ngModel)]="bac_libelle" value="bac_libelle">
       <ion-item *ngFor="let bac of bacs | async">
-        <ion-select-option value="{{ bac.id }}">{{ bac.libelle }}</ion-select-option>
+        <ion-select-option value="{{ bac.libelle }}">{{ bac.libelle }}</ion-select-option>
     </ion-item>
     </ion-select>
   </ion-item>
@@ -44,7 +44,7 @@
     <ion-label>Option 1</ion-label>
     <ion-select interface="action-sheet" [(ngModel)]="bac_Option1" value="bac_Option1">
       <ion-item *ngFor="let option of bacOptions | async">
-        <ion-select-option value="{{ option.id }}">{{ option.libelle }}</ion-select-option>
+        <ion-select-option value="{{ option.libelle }}">{{ option.libelle }}</ion-select-option>
     </ion-item>
     </ion-select>
   </ion-item>
@@ -53,7 +53,7 @@
     <ion-label>Option 2</ion-label>
     <ion-select interface="action-sheet" [(ngModel)]="bac_Option2" value="bac_Option2">
       <ion-item *ngFor="let option of bacOptions | async">
-        <ion-select-option value="{{ option.id }}">{{ option.libelle }}</ion-select-option>
+        <ion-select-option value="{{ option.libelle }}">{{ option.libelle }}</ion-select-option>
     </ion-item>
     </ion-select>
   </ion-item>
@@ -62,7 +62,7 @@
     <ion-label>Option 3</ion-label>
     <ion-select interface="action-sheet" [(ngModel)]="bac_Option3" value="bac_Option3">
       <ion-item *ngFor="let option of bacOptions | async">
-        <ion-select-option value="{{ option.id }}">{{ option.libelle }}</ion-select-option>
+        <ion-select-option value="{{ option.libelle }}">{{ option.libelle }}</ion-select-option>
     </ion-item>
     </ion-select>
   </ion-item>
@@ -115,8 +115,7 @@
   <ion-content class="padding">
     <div class = "row center">
       <div class="col text-center">
-        <ion-button (click)="addFirestore()"  color="success" type="submit">Success</ion-button>
-        <!--(click)="addFirestore()" -->
+        <ion-button (click)="Validation()"  color="success" type="submit">Success</ion-button>
       </div>
     </div>
   </ion-content>
