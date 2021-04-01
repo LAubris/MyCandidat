@@ -4,7 +4,9 @@
 
 <ion-content>
 
-
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <br><br><br>
   <ion-img [src]="images" name="logo.png"></ion-img>
