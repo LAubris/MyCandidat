@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class InscriptionPage implements OnInit {
 
+  listeMails;
+
   constructor(
     public afDB: AngularFireDatabase,
     public firestore: AngularFirestore,
@@ -19,8 +21,6 @@ export class InscriptionPage implements OnInit {
     public router: Router,
     )
     {
-
-
       this.candidats = firestore.collection('candidats');
       this.inscriptions = firestore.collection('inscriptions').valueChanges();
       this.inscriptionsBacs = firestore.collection('inscriptionsBacs').valueChanges();
@@ -28,13 +28,18 @@ export class InscriptionPage implements OnInit {
       this.etablissements = firestore.collection('etablissements').valueChanges();
       this.bacs = firestore.collection('bacs').valueChanges();
       this.bacOptions = firestore.collection('bacOptions').valueChanges();
+
+      this.listeMails = [];
      }
   ngOnInit() {
- 
+    this.candidats.ref.onSnapshot(candidat => {
+      candidat.forEach(element => {
+              this.listeMails.push({mail:element.data().can_mail,});
+            })
+          });
   }
   public candidats;
-  //candidats: Observable<any[]>;
-  inscriptions: Observable<any[]>;
+  public inscriptions;
   inscriptionsBacs: Observable<any[]>;
 
   etablissements: Observable<any[]>;
@@ -64,30 +69,27 @@ export class InscriptionPage implements OnInit {
 
 
 
+
+
   Verification(){
     var isExist = false;
-    var mails = [];
-    this.candidats.ref.onSnapshot(candidat => {
-      candidat.forEach(element => {
-        mails.push(element.data().can_mail)
-      });
-    console.log(mails)
-    
-    for (let i = 0; i < 5; i++) {
-      if (mails[i] == this.can_mail) {
+    for (let i = 0; i < this.listeMails.length; i++) {
+      if (this.listeMails[i].mail == this.can_mail) {
         isExist = true
         break
       }
       else{
-        isExist = false;
-      }}
-      if(isExist == false){
-console.log("erreur")
-      }else{
-console.log("presque pas erreur")
-      }
-    });
+      
+      } 
+    }
+    if (isExist == true) {
+      this.addFirestorePasNew()
+    }
+    else{
+      this.addFirestoreNew()
+    }
   }
+
 
 
   addFirestoreNew() {
@@ -165,7 +167,7 @@ console.log("presque pas erreur")
       {
         text: 'Confirmer',
         handler: () => {
-          this.addFirestoreNew();
+          this.Verification();
           this.router.navigate(['tabs/accueil']);
         }
       },
