@@ -19,7 +19,9 @@ export class InscriptionPage implements OnInit {
     public router: Router,
     )
     {
-      this.candidats = firestore.collection('candidats').valueChanges();
+
+
+      this.candidats = firestore.collection('candidats');
       this.inscriptions = firestore.collection('inscriptions').valueChanges();
       this.inscriptionsBacs = firestore.collection('inscriptionsBacs').valueChanges();
 
@@ -30,8 +32,8 @@ export class InscriptionPage implements OnInit {
   ngOnInit() {
  
   }
-
-  candidats: Observable<any[]>;
+  public candidats;
+  //candidats: Observable<any[]>;
   inscriptions: Observable<any[]>;
   inscriptionsBacs: Observable<any[]>;
 
@@ -46,6 +48,8 @@ export class InscriptionPage implements OnInit {
   can_mail: string;
   can_tel: string;
 
+  
+
 
   ins_date: String = new Date().getUTCDate() +"/"+(new Date().getUTCMonth()+1)+"/"+new Date().getFullYear();
   ins_form: string;
@@ -59,8 +63,35 @@ export class InscriptionPage implements OnInit {
   bac_Option3: string;
 
 
-  addFirestore() {
-    this.can_id = new Date().getTime() + Math.floor(Math.random() * 50);
+
+  Verification(){
+    var isExist = false;
+    var mails = [];
+    this.candidats.ref.onSnapshot(candidat => {
+      candidat.forEach(element => {
+        mails.push(element.data().can_mail)
+      });
+    console.log(mails)
+    
+    for (let i = 0; i < 5; i++) {
+      if (mails[i] == this.can_mail) {
+        isExist = true
+        break
+      }
+      else{
+        isExist = false;
+      }}
+      if(isExist == false){
+console.log("erreur")
+      }else{
+console.log("presque pas erreur")
+      }
+    });
+  }
+
+
+  addFirestoreNew() {
+    this.can_id = new Date().getTime() + Math.floor(Math.random() * 9);
     var id_doc_can = this.can_id.toString();
     this.firestore.collection('candidats').doc(id_doc_can).set({
       can_id: this.can_id,
@@ -69,6 +100,27 @@ export class InscriptionPage implements OnInit {
       can_mail: this.can_mail,
       can_tel: this.can_tel,
       });
+    this.firestore.collection('inscriptions').add({
+      can_id: this.can_id,
+      ins_date: this.ins_date,
+      ins_form: this.ins_form,
+      ins_lieu: this.ins_lieu,
+      });
+    this.firestore.collection('inscriptionsBacs').add({
+      can_id: this.can_id,
+      bac_etablissement: this.bac_etablissement,
+      bac_libelle: this.bac_libelle,
+      bac_Option1: this.bac_Option1,
+      bac_Option2: this.bac_Option2,
+      bac_Option3: this.bac_Option3,
+      });
+  
+  }
+
+  addFirestorePasNew() {
+    this.can_id = new Date().getTime() + Math.floor(Math.random() * 50);
+    var id_doc_can = this.can_id.toString();
+    
     this.firestore.collection('inscriptions').add({
       can_id: this.can_id,
       ins_date: this.ins_date,
@@ -113,7 +165,7 @@ export class InscriptionPage implements OnInit {
       {
         text: 'Confirmer',
         handler: () => {
-          this.addFirestore();
+          this.addFirestoreNew();
           this.router.navigate(['tabs/accueil']);
         }
       },
@@ -127,3 +179,4 @@ export class InscriptionPage implements OnInit {
 
     
 }
+
