@@ -19,15 +19,14 @@ const routes: Routes = [
   {
     path: 'enseignant',
     loadChildren: () => import('./enseignant/enseignant.module').then( m => m.EnseignantPageModule)
-  },  {
-    path: 'rgpd',
-    loadChildren: () => import('./rgpd/rgpd.module').then( m => m.RgpdPageModule)
   },
   {
-    path: 'connexion',
-    loadChildren: () => import('./connexion/connexion.module').then( m => m.ConnexionPageModule)
+    path: 'rgpd',
+    loadChildren: () => import('./rgpd/rgpd.module').then( m => m.RgpdPageModule)
+  },  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   }
-
 
 
 ];

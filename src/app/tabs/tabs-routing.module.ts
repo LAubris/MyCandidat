@@ -21,11 +21,11 @@ const routes: Routes = [
       },
       {
         path: 'rgpd',
-        loadChildren: () => import('../Rgpd/rgpd.module').then(m => m.RgpdPageModule)
+        loadChildren: () => import('../rgpd/rgpd.module').then(m => m.RgpdPageModule)
       },
       {
-        path: 'connexion',
-        loadChildren: () => import('../Connexion/connexion.module').then(m => m.ConnexionPageModule)
+        path: 'login',
+        loadChildren: () => import('../login/login.module').then(m => m.LoginPageModule)
       },
       {
         path: '',

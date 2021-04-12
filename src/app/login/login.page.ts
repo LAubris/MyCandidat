@@ -3,12 +3,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-connexion',
-  templateUrl: './connexion.page.html',
-  styleUrls: ['./connexion.page.scss'],
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class ConnexionPage implements OnInit {
+export class LoginPage implements OnInit {
 
   constructor(
     public toastController: ToastController,
@@ -17,11 +18,7 @@ export class ConnexionPage implements OnInit {
     private router: Router
   ) {
     this.afAuth.authState.subscribe(auth => {
-      if (!auth) {
-        this.router.navigateByUrl('/tabs/accueil');
-        console.log('non connecté');
-        this.connected = false;
-      } else {
+      if (auth) {
         this.router.navigateByUrl('/tabs/enseignant');
         console.log('connecté: ' + auth.uid);
         this.connected = true;
