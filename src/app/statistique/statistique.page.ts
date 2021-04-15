@@ -1,6 +1,8 @@
 
 import { Component, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 @Component({
   selector: 'app-statistique',
   templateUrl: './statistique.page.html',
@@ -10,15 +12,40 @@ export class StatistiquePage {
   @ViewChild('barChart') barChart;
   bars: any;
   colorArray: any;
-  constructor() { }
+  listeAnnee;
+
+  constructor(public firestore: AngularFirestore, public afAuth: AngularFireAuth,) {
+    this.inscriptions = firestore.collection('inscriptions');
+    this.listeAnnee = [];
+   }
   ionViewDidEnter() {
     this.createBarChart();
+    
   }
+
+  public inscriptions;
+
+  ngOnInit() {
+    this.inscriptions.ref.onSnapshot(inscription => {
+      inscription.forEach(element => {
+
+            if(this.listeAnnee.includes(element.data().ins_date) == true){
+            }
+            else{
+              this.listeAnnee.push(element.data().ins_date);
+            } 
+          
+          });
+        });
+        
+  }
+
+
     createBarChart() {
       this.bars = new Chart(this.barChart.nativeElement, {
         type: 'line',
         data: {
-          labels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027'],
+          labels: this.listeAnnee,
           datasets: [{
             label: 'SISR',
             data: [2.5, 3.8, 5, 6.9, 6.9, 7.5, 10, 17],
