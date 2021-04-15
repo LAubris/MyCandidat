@@ -23,10 +23,16 @@ const routes: Routes = [
   {
     path: 'rgpd',
     loadChildren: () => import('./rgpd/rgpd.module').then( m => m.RgpdPageModule)
-  },  {
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  }
+  },  {
+    path: 'statistique',
+    loadChildren: () => import('./statistique/statistique.module').then( m => m.StatistiquePageModule)
+  },
+
+ 
 
 
 ];

@@ -28,6 +28,10 @@ const routes: Routes = [
         loadChildren: () => import('../login/login.module').then(m => m.LoginPageModule)
       },
       {
+        path: 'statistique',
+        loadChildren: () => import('../statistique/statistique.module').then(m => m.StatistiquePageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/accueil',
         pathMatch: 'full'

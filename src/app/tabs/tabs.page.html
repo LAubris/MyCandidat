@@ -3,15 +3,23 @@
 
 
     <div *ngIf="connected">
+
+
+      
       <ion-tab-bar slot="bottom">
     <ion-tab-button tab="accueil" (click)="logout()">
       <ion-icon name="triangle"></ion-icon>
       <ion-label>Déconnexion</ion-label>
     </ion-tab-button>
-      
-    <ion-tab-button tab="">
+
+    <ion-tab-button tab="enseignant">
       <ion-icon name="triangle"></ion-icon>
-      <ion-label>Récapitulatif</ion-label>
+      <ion-label>Liste</ion-label>
+    </ion-tab-button> 
+
+    <ion-tab-button tab="statistique">
+      <ion-icon name="triangle"></ion-icon>
+      <ion-label>Statistique</ion-label>
     </ion-tab-button> 
   </ion-tab-bar>
 </div>
