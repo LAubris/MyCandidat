@@ -1,10 +1,8 @@
 <ion-tabs>
 
 
-
+<!--Si je suis connecter je vois le bouton deconnexion-->
     <div *ngIf="connected">
-
-
       
       <ion-tab-bar slot="bottom">
     <ion-tab-button tab="accueil" (click)="logout()">
@@ -12,18 +10,10 @@
       <ion-label>Déconnexion</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="enseignant">
-      <ion-icon name="triangle"></ion-icon>
-      <ion-label>Liste</ion-label>
-    </ion-tab-button> 
 
-    <ion-tab-button tab="statistique">
-      <ion-icon name="triangle"></ion-icon>
-      <ion-label>Statistique</ion-label>
-    </ion-tab-button> 
   </ion-tab-bar>
 </div>
-
+<!--Si je suis déconnecter je vois le bouton Accueil-->
 <div *ngIf="!connected">
   <ion-tab-bar slot="bottom">
   <ion-tab-button tab="accueil">

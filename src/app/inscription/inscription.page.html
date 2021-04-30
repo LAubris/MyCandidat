@@ -5,9 +5,6 @@
     <div class="ion-text-center">
   <ion-title>Formulaire d'inscription</ion-title>
   </div></ion-col>
-
-
-
   <ion-item>
     <ion-label position="floating">Nom</ion-label>
     <ion-input [(ngModel)]="can_nom" placeholder="Nom" type="string" id="can_nom" ></ion-input>
@@ -24,7 +21,6 @@
     <ion-label position="floating">Téléphone</ion-label>
     <ion-input [(ngModel)]="can_tel" placeholder="Numéro de téléphone" type="string" id="can_tel"></ion-input>
   </ion-item>
-
   <ion-item>
     <ion-label>Etablissement de votre Bac</ion-label>
     <ion-select interface="action-sheet" [(ngModel)]="bac_etablissement" value="bac_etablissement">
@@ -33,7 +29,6 @@
     </ion-item>
     </ion-select>
   </ion-item>
-
   <ion-item>
     <ion-label>Votre bac</ion-label>
     <ion-select interface="action-sheet" [(ngModel)]="bac_libelle" value="bac_libelle">
@@ -42,7 +37,6 @@
     </ion-item>
     </ion-select>
   </ion-item>
-
   <ion-item>
     <ion-label>Option 1</ion-label>
     <ion-select interface="action-sheet" [(ngModel)]="bac_Option1" value="bac_Option1">
@@ -51,7 +45,6 @@
     </ion-item>
     </ion-select>
   </ion-item>
-
   <ion-item>
     <ion-label>Option 2</ion-label>
     <ion-select interface="action-sheet" [(ngModel)]="bac_Option2" value="bac_Option2">
@@ -60,7 +53,6 @@
     </ion-item>
     </ion-select>
   </ion-item>
-
   <ion-item>
     <ion-label>Option 3</ion-label>
     <ion-select interface="action-sheet" [(ngModel)]="bac_Option3" value="bac_Option3">
@@ -69,9 +61,6 @@
     </ion-item>
     </ion-select>
   </ion-item>
-  
-
-
   <ion-list>
     <ion-radio-group [(ngModel)]="ins_form" value="ins_form">
       <ion-list-header>
@@ -91,9 +80,6 @@
       </ion-item>
     </ion-radio-group>
   </ion-list>
-
-
-
   <ion-list>
     <ion-radio-group [(ngModel)]="ins_lieu" value="ins_lieu">
       <ion-list-header>
@@ -109,11 +95,7 @@
       </ion-item>
     </ion-radio-group>
   </ion-list>
-
-
       <section class="full-width">
         <ion-button (click)="Validation()" expand="full"  shape="round" color="success" type="submit">Success</ion-button>
       </section>
-
-
 </ion-content>

@@ -11,7 +11,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ChartsModule } from 'ng2-charts';
-
+//constante permettant la connexion à la bdd et l'accès à differente fonctionnalite 
 export const firebaseConfig = {
   apiKey: "AIzaSyD6akPBVCWq7MYKCMW47MpS9IYAbdL7Xgo",
   authDomain: "mycandidat-a2e10.firebaseapp.com",

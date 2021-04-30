@@ -21,6 +21,7 @@ export class InscriptionPage implements OnInit {
     public router: Router,
     )
     {
+      //recuperation de la collection candidats et stockage des données dans la variable candidats
       this.candidats = firestore.collection('candidats');
       this.inscriptions = firestore.collection('inscriptions').valueChanges();
       this.inscriptionsBacs = firestore.collection('inscriptionsBacs').valueChanges();
@@ -31,6 +32,7 @@ export class InscriptionPage implements OnInit {
 
       this.listeMails = [];
      }
+     //au demarrage de la page, parcours de la collection candidats et ajout des mails dans la variable listeMails
   ngOnInit() {
     this.candidats.ref.onSnapshot(candidat => {
       candidat.forEach(element => {
@@ -40,6 +42,8 @@ export class InscriptionPage implements OnInit {
   }
   public candidats;
   public inscriptions;
+
+  //declaration des objets selon son type
   inscriptionsBacs: Observable<any[]>;
 
   etablissements: Observable<any[]>;
@@ -70,7 +74,7 @@ export class InscriptionPage implements OnInit {
 
 
 
-
+  // verification si le candidat existe deja selon son adresse mail
   Verification(){
     var isExist = false;
     for (let i = 0; i < this.listeMails.length; i++) {
@@ -79,19 +83,20 @@ export class InscriptionPage implements OnInit {
         break
       }
       else{
-      
       } 
     }
     if (isExist == true) {
+      // si il existe utilisation de la fonction d'ajout dans la table inscription
       this.addFirestorePasNew()
     }
     else{
+      //si il n'existe pas création du candidat avec la fonction
       this.addFirestoreNew()
     }
   }
 
 
-
+// fonction d'ajout du nouveau candidats dans la collection candidats et inscription
   addFirestoreNew() {
     this.can_id = new Date().getTime() + Math.floor(Math.random() * 9);
     var id_doc_can = this.can_id.toString();
@@ -119,6 +124,7 @@ export class InscriptionPage implements OnInit {
   
   }
 
+  // fonction d'ajout des nouvelle donnée du candidats deja existant dans la collection inscription
   addFirestorePasNew() {
     this.can_id = new Date().getTime() + Math.floor(Math.random() * 50);
     var id_doc_can = this.can_id.toString();
@@ -139,7 +145,7 @@ export class InscriptionPage implements OnInit {
       });
   
   }
- 
+ // fonction de validation des données insérer par un pop-up
   async Validation() { 
     const alert = await this.alertCtrl.create({ 
     header: 'Ajouter', 

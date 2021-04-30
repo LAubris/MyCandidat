@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+//route permettant la navigation entre les pages lors du changement de page mettre le nom de la route comme en symfony
 const routes: Routes = [
   {
     path: '',
@@ -27,7 +27,8 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },  {
+  },
+  {
     path: 'statistique',
     loadChildren: () => import('./statistique/statistique.module').then( m => m.StatistiquePageModule)
   },

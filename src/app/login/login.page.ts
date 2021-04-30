@@ -33,6 +33,8 @@ export class LoginPage implements OnInit {
     email: '',
     password: ''
  };
+
+ //fonction permettant de se connecter
  login() {
   this.afAuth.signInWithEmailAndPassword(this.dataUser.email, this.dataUser.password);
    this.dataUser = {
@@ -40,6 +42,7 @@ export class LoginPage implements OnInit {
      password: ''
    };
 }
+//fonction permettant de se déconnecter
 logout() {
   this.afAuth.signOut();
 }
